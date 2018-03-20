@@ -8,6 +8,8 @@
     <artifactId>headfirst-parent</artifactId>
     <version>1.0</version>
     <modules>
+        <module>headfirst-utility</module>
+        <module>headfirst-io</module>
         <module>headfirst-spring</module>
         <module>headfirst-reflection</module>
     </modules>
@@ -23,6 +25,16 @@
         <spring.version>4.3.14.RELEASE</spring.version>
         <aspectj.version>1.8.13</aspectj.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <pluginManagement>
