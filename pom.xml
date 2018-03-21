@@ -24,10 +24,26 @@
         <junit.version>4.12</junit.version>
         <spring.version>4.3.14.RELEASE</spring.version>
         <aspectj.version>1.8.13</aspectj.version>
+        <headfirst-io.version>1.0</headfirst-io.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>me.azno.study</groupId>
+                <artifactId>headfirst-io</artifactId>
+                <version>${headfirst-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>

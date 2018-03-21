@@ -1,9 +1,10 @@
 package me.azno.study.utility.datetime;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import me.azno.study.io.IFileReader;
+import me.azno.study.io.IFileWriter;
+import me.azno.study.io.impl.MyFileReader;
+import me.azno.study.io.impl.MyFileWriter;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -12,25 +13,41 @@ import java.util.*;
  */
 public class GenerateDays {
     private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    private String delimiter = ",";
+    private String writeFile = null;
+    private int startYear = 2015;
+    private int years = 5;
+
+    public GenerateDays(int startYear, int years, String writeFile) {
+        this.startYear = startYear;
+        this.years = years;
+        this.writeFile = writeFile;
+    }
 
     public static void main(String[] args) {
-        GenerateDays generater = new GenerateDays();
-        List<Date> dates = new ArrayList<Date>();
-        List<String> rsList = new ArrayList<String>();
-        // 1. 5 years loop
         int startYear = 2015;
-        for (int i = 0; i < 5; i++) {
+        int years = 5;
+        GenerateDays generator = new GenerateDays(startYear, years, args[0]);
+        generator.generate();
+    }
+
+    public void generate() {
+        List<Date> dates = new ArrayList<Date>();
+        IFileWriter writer = new MyFileWriter(writeFile);
+        // 1. 5 years loop
+        for (int i = 0; i < years; i++) {
             // generate days in one year
-            dates.addAll(generater.generateDateInOneYear(startYear + i));
+            dates.addAll(generateDateInOneYear(startYear + i));
         }
 
         // 2. Handler 处理周末，假期
         // 2.1 获取假期数据
-        Map<String, Integer> holidayMap = generater.getHolidaysMap();
+        Map<String, Integer> holidayMap = getHolidaysMap();
         Calendar calendar = Calendar.getInstance();
         StringBuilder stringBuilder = new StringBuilder();
         for (Date d : dates) {
-            stringBuilder.append(format.format(d)).append(",");
+            String dateStr = format.format(d);
+            stringBuilder.append(dateStr).append(delimiter);
             calendar.setTime(d);
             int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
             if (weekDay == Calendar.SATURDAY || weekDay == Calendar.SUNDAY) {
@@ -38,15 +55,16 @@ public class GenerateDays {
             } else {
                 stringBuilder.append(0);
             }
-            rsList.add(stringBuilder.toString());
-            stringBuilder.delete(0, 15);
+            stringBuilder.append(delimiter);
+            if (holidayMap.containsKey(dateStr)) {
+                stringBuilder.append(holidayMap.get(dateStr));
+            } else {
+                stringBuilder.append(0);
+            }
+            writer.writeLine(stringBuilder.toString());
+            stringBuilder.delete(0, stringBuilder.length());
         }
-
-        // last step. print
-        for (String str : rsList) {
-            System.out.println(str);
-        }
-
+        writer.close();
 
     }
 
@@ -64,29 +82,15 @@ public class GenerateDays {
 
     private Map<String, Integer> getHolidaysMap() {
         Map<String, Integer> map = new HashMap<String, Integer>();
-        FileReader fileReader = null;
-        try {
-            fileReader = new FileReader(
-                    this.getClass().getClassLoader().getResource("holiday").getFile()
-            );
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] splits = line.split(",");
-                map.put(splits[0], Integer.parseInt(splits[1]));
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (null != fileReader) {
-                try {
-                    fileReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+        IFileReader reader = new MyFileReader(
+                this.getClass().getClassLoader().getResource("holidays").getFile()
+        );
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] splits = line.split(delimiter);
+            map.put(splits[0], Integer.parseInt(splits[1]));
         }
+        reader.close();
         return map;
     }
 }
