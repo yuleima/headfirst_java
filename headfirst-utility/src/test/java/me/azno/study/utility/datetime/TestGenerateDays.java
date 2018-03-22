@@ -13,7 +13,7 @@ import java.util.Map;
 public class TestGenerateDays {
     private static final Logger logger = LoggerFactory.getLogger(TestGenerateDays.class);
     private GenerateDays generator;
-    private Class claz;
+    private Class<?> claz;
 
     @Before
     public void before() {

@@ -9,9 +9,9 @@
         <artifactId>headfirst-parent</artifactId>
         <version>1.0</version>
     </parent>
-    
+
     <groupId>me.azno.study</groupId>
-    <artifactId>headfirst-io</artifactId>
+    <artifactId>headfirst-collection</artifactId>
     <version>1.0</version>
 
     

@@ -10,6 +10,7 @@
     <modules>
         <module>headfirst-utility</module>
         <module>headfirst-io</module>
+        <module>headfirst-collection</module>
         <module>headfirst-spring</module>
         <module>headfirst-reflection</module>
     </modules>
