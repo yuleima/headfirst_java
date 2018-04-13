@@ -14,19 +14,22 @@ public class T1 {
         String path = "C:\\Users\\leigh";
         path = "C:\\Users\\leigh\\AppData\\Local\\Microsoft\\Windows\\INetCache\\Low";
         path = "C:\\Users\\leigh\\AppData\\Local\\Microsoft\\Windows";
+        path = "C:\\Users\\leigh\\AppData\\Roaming\\Citra";
+//        path = "C:\\Users\\leigh\\AppData\\Roaming\\.mono";
         File root = new File(path);
 //        list(root);
 //        listFiles(root);
 //        space(root);
         Map<String, File> map = new HashMap<>();
 //        recursion(root, map);
-        recursion2(root, map);
+//        recursion2(root, map);
+        recursion3(root, map);
         logger.info("{}", map.size());
 //        for (Map.Entry<String, File> entry : map.entrySet()) {
 //            logger.info("{}", entry.getKey());
 //        }
-        long fileCount = map.values().stream().filter(file -> file.isFile()).count();
-        long dirCount = map.values().stream().filter(file -> file.isDirectory()).count();
+        long fileCount = map.values().stream().filter(File::isFile).count();
+        long dirCount = map.values().stream().filter(File::isDirectory).count();
         logger.info("{} {} ", fileCount, dirCount);
     }
 
@@ -85,7 +88,23 @@ public class T1 {
                 map.put(file.getAbsolutePath(), file);
                 if (file.isDirectory())
                     recursion2(file, map);
+
             }
+        }
+    }
+
+    private static void recursion3(File path, Map<String, File> map) throws Exception {
+        if (map == null)
+            throw new Exception("map is null");
+        map.put(path.getAbsolutePath(), path);
+        if (path.isDirectory()) {
+            File[] files = path.listFiles();
+            if (files != null)
+                for (File file : files) {
+                    if (path.isDirectory()) {
+                        recursion3(file, map);
+                    }
+                }
         }
     }
 
