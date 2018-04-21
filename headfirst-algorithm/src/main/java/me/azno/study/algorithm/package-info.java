@@ -1,1 +1,1 @@
-package me.azno.study.java8;
+package me.azno.study.algorithm;
