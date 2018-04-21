@@ -15,6 +15,9 @@
         <module>headfirst-spring</module>
         <module>headfirst-reflection</module>
         <module>headfirst-guava</module>
+        <module>headfirst-recurision</module>
+        <module>headfirst-algorithm</module>
+        <module>headfirst-datastructure</module>
     </modules>
     <packaging>pom</packaging>
 
