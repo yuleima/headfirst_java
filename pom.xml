@@ -18,6 +18,7 @@
         <module>headfirst-recurision</module>
         <module>headfirst-algorithm</module>
         <module>headfirst-datastructure</module>
+        <module>headfirst-concurrency</module>
     </modules>
     <packaging>pom</packaging>
 
