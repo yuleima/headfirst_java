@@ -8,6 +8,7 @@
     <artifactId>headfirst-parent</artifactId>
     <version>1.0</version>
     <modules>
+        <module>headfirst-javalang</module>
         <module>headfirst-java8</module>
         <module>headfirst-utility</module>
         <module>headfirst-io</module>
