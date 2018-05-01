@@ -1,5 +1,6 @@
-package me.azno.study.image;
+package me.azno.study.image.tmp;
 
+import me.azno.study.image.util.RGBUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +17,17 @@ public class First {
         BufferedImage image = ImageIO.read(file);
         int width = image.getWidth();
         int height = image.getHeight();
-        int rgb0_0 = image.getRGB(0, 0);
-        logger.info("{}", rgb0_0);
+        pixelRGB(image);
+    }
+
+    private static void pixelRGB(BufferedImage image) {
+        int rgb0_0 = image.getRGB(image.getMinX(), image.getMinY());
+        logger.info("{}", RGBUtil.getRGB(rgb0_0));
+    }
+
+    private static void toAnotherImage(BufferedImage image) {
+        int rgb0_0 = image.getRGB(image.getMinX(), image.getMinY());
+
+        logger.info("{}", RGBUtil.getRGB(rgb0_0));
     }
 }
