@@ -7,24 +7,21 @@ import java.io.File;
 
 public class ModifyFilesName {
     private static final Logger logger = LoggerFactory.getLogger(ModifyFilesName.class);
-    private static final String replace = "abc_";
+    private static final String replace = "DRAGON QUEST XI Echoes of an Elusive Age_";
 
     public static void main(String[] args) throws Exception {
-        // 参数，一个目录
-        String folderPath = "D:\\temp\\20180530";
+        String folderPath = "G:\\PS4\\SHARE\\Video Clips\\DRAGON QUEST XI Echoes of an Elusive Age";
         ModifyFilesName obj = new ModifyFilesName();
         obj.renameFilesInFolder(folderPath);
     }
 
     private void renameFilesInFolder(String folderPath) throws Exception {
-        // 遍历目录，获得文件
         File folder = new File(folderPath);
         if (!folder.isDirectory()) {
             throw new Exception(String.format("%s is not a directory", folder.getAbsolutePath()));
         }
         File[] files = folder.listFiles();
         for (File file : files) {
-            // 修改文件名
             rename(file);
         }
     }
