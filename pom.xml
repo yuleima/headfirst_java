@@ -35,7 +35,7 @@
         <aspectj.version>1.8.13</aspectj.version>
         <headfirst-io.version>1.0</headfirst-io.version>
         <guava.version>23.0</guava.version>
-        <tess.version>3.4.7</tess.version>
+        <tess.version>4.0.2</tess.version>
     </properties>
 
     <dependencyManagement>
