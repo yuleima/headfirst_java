@@ -11,6 +11,7 @@ public class ModifyFilesName {
 
     public static void main(String[] args) throws Exception {
         String folderPath = "G:\\PS4\\SHARE\\Video Clips\\DRAGON QUEST XI Echoes of an Elusive Age";
+//        folderPath = "G:\\PS4\\SHARE\\Screenshots\\DRAGON QUEST XI Echoes of an Elusive Age";
         ModifyFilesName obj = new ModifyFilesName();
         obj.renameFilesInFolder(folderPath);
     }
