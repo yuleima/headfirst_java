@@ -26,10 +26,7 @@ public class CutImgDemo {
         File file = new File(filePath);
         BufferedImage image = ImageIO.read(file);
         Box box = demo.cut(image);
-        box.x -= 3;
-        box.y -= 3;
-        box.w += 6;
-        box.y += 6;
+
         BufferedImage cropImg = demo.cropImage(image, box);
         demo.writeImage(cropImg, new File(demo.getOutputFileName(file, "cut")));
     }
