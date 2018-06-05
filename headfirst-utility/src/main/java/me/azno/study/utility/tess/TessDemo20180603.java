@@ -10,7 +10,7 @@ import java.io.File;
 
 public class TessDemo20180603 {
     private static final Logger logger = LoggerFactory.getLogger("test");
-    private static final String TESS_DATAPATH = "D:\\dev\\IdeaProjects\\headfirst_java\\headfirst-utility\\src\\main\\resources\\tessdata";
+    private static final String TESS_DATAPATH = "D:\\Program Files\\Tesseract-OCR\\tessdata";
 
     public static void main(String[] args) {
         String fileName = "20180602025455";
@@ -19,6 +19,7 @@ public class TessDemo20180603 {
         String ext = "_buttom";
         ext = "_lvlupmain";
         String filePath = String.format("%s\\%s_crop%s.jpg", path, fileName, ext);
+        filePath = "D:\\temp\\20180604\\ocr\\cut\\1.png_crop_cut.png";
         logger.info("{}", filePath);
         testTess4j(filePath);
     }
