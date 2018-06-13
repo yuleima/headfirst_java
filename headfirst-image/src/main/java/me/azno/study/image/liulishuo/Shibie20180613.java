@@ -47,7 +47,7 @@ public class Shibie20180613 {
 //                logger.info("x {} color {}",x,color);
                 if(!color.equals(color00)) {
                     endX = x;
-                    logger.info("{}",endX);
+                    logger.info("y {} x {}",y,x);
                     break;
                 }
             }
