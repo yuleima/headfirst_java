@@ -52,6 +52,7 @@ public class Shibie20180613 {
                 }
             }
             endY = y;
+            // last one
             if (endY !=0 && endX == 0) {
                 break;
             }
