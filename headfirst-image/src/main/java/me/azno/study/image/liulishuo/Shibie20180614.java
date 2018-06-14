@@ -12,11 +12,11 @@ import java.io.IOException;
 /**
  * 识别跟读图像
  */
-public class Shibie20180613 {
+public class Shibie20180614 {
     private static final Logger logger = LoggerFactory.getLogger("test");
 
     public static void main(String[] args) throws Exception {
-        Shibie20180613 demo = new Shibie20180613();
+        Shibie20180614 demo = new Shibie20180614();
         String path = "D:\\temp\\20180613";
         String fileName = "Screenshot_2018-05-30-07-56-08-613_com.liulishuo.engzo";
 
@@ -41,6 +41,9 @@ public class Shibie20180613 {
         int[] innerBorderEndPixel = {0, 0};
 
         outerBorderEndPixel[1] = 30;
+
+        Pixel pixel = new Pixel(0,0,0);
+
 
         // r=27,g=156,b=253 -14967555
         int rgbStrip = image.getRGB(outerBorderStartPixel[0], outerBorderStartPixel[1]);
