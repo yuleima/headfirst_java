@@ -16,12 +16,10 @@ public class TessDemo20180602 {
     public static void main(String[] args) {
         String fileName = "20180602025455";
         fileName = "20180527192210";
-        fileName = "2_3";
         String path = "D:\\tmp\\20180531\\demos\\demo_files";
         String ext = "_buttom";
         ext = "_lvlupmain";
         String filePath = String.format("%s\\%s_crop%s.jpg", path, fileName, ext);
-        filePath = String.format("%s\\%s.jpg", path, fileName);
         logger.info("{}", filePath);
         testTess4j(filePath);
     }
@@ -34,7 +32,6 @@ public class TessDemo20180602 {
 //        lib = "eng";
 //        lib = "chi_sim_vert";
 //        lib = "chi_tra_vert";
-//        lib = "eng+chi_tra";
 
         instance.setLanguage(lib);
 
